@@ -6,7 +6,13 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:35:47 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/13 19:35:48 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/13 20:16:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+char    *get_next_line(int fd);
+
+#endif
