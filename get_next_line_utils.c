@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:35:44 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/14 02:39:37 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:28:45 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*p;
 
 	i = 0;
-	if (!s)
-		return (NULL);
+	if (!s[0])
+		return (free((char *)s),NULL);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
@@ -67,47 +67,51 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!p)
 		return (0);
 	while (s[i] && i < len)
-	{
 		p[i++] = s[start++];
-	}
+		
 	p[i] = '\0';
-	return (p);
+	return (free((char *)s),s=NULL,p);
 }
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
+	int i; 
+	i = 0;
+		if ((char)c == '\0')
+		return (str);
 	while (*str)
 	{
 		if ((*str == (char)c))
-			return ((char *)str);
+			return (str);
 		str++;
 	}
-	if ((char)c == '\0')
-		return ((char *)str);
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char  *s1, char  *s2)
 {
 	size_t	i;
 	size_t	j;
 	char	*p;
 
-	i = -1;
-	j = -1;
+	i = 0;
+	j = 0;
 	if (!s1 && !s2)
 		return (NULL);
-	if (!s1)
-		s1 = ft_strdup("");
-	if (!s2)
-		s2 = ft_strdup("");
 	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!p)
 		return (NULL);
-	while (s1[++i])
+	while (s1[i])
+	{
 		p[i] = s1[i];
-	while (s2[++j])
+		i++;
+	}
+	while (s2[j])
+	{
 		p[i + j] = s2[j];
+		j++;
+	}
 	p[i + j] = 0;
+	// /free(s1);
 	return (p);
 }
