@@ -6,30 +6,30 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:35:47 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/17 13:17:02 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:06:37 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 10
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include<unistd.h>
-#include<stdlib.h>
-#include<stdio.h>
+# include<stdlib.h>
+# include<stdio.h>
 
 size_t	ft_strlen(char *str);
-size_t	ft_strlcpy(char *dst,char *src, size_t n);
+size_t	ft_strlcpy(char *dst, char *src, size_t n);
 char	*ft_strdup(char *str);
 char	*ft_substr(char *s, unsigned int start, size_t len);
-int     is_newline(char *str);
-char	*ft_strjoin(char  *s1, char  *s2);
-int     get_index(char	*str);
+int		is_newline(char *str);
+char	*ft_strjoin(char *s1, char *s2);
+int		get_index(char	*str);
 char	*before_newline(char *str);
 char	*after_newline(char *str);
-char    *get_next_line(int fd);
+char	*get_next_line(int fd);
 
 #endif

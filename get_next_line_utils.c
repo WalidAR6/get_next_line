@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:35:44 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/17 13:16:53 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:44:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst,char *src, size_t n)
+size_t	ft_strlcpy(char *dst, char *src, size_t n)
 {
 	size_t	i;
+
+	i = 0;
 	if (dst == NULL || n == 0)
 		return (ft_strlen(src));
-	i = 0;
 	while (src[i] && i < n - 1)
 	{
 		dst[i] = src[i];
@@ -44,7 +45,7 @@ size_t	ft_strlcpy(char *dst,char *src, size_t n)
 char	*ft_strdup(char *str)
 {
 	char	*p;
-	
+
 	p = malloc((ft_strlen(str) + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
@@ -76,5 +77,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	p[i + j] = 0;
-	return (p);
+	return (free(s1), s1 = NULL, p);
 }
