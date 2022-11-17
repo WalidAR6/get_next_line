@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:35:47 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/16 19:26:16 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:17:02 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t n);
-char	*ft_strdup(const char *str);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strchr(char *str, int c);
+size_t	ft_strlen(char *str);
+size_t	ft_strlcpy(char *dst,char *src, size_t n);
+char	*ft_strdup(char *str);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+int     is_newline(char *str);
 char	*ft_strjoin(char  *s1, char  *s2);
 int     get_index(char	*str);
 char	*before_newline(char *str);

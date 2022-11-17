@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:34:50 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/16 20:06:35 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:17:19 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int get_index(char	*str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i] && *(str + i) != '\n')
+	while (str[i] && str[i] != '\n')
 		i++;
-	
+	if(str[i] == '\n')
+		i++;
 	return(i);
 }
 
@@ -36,7 +37,7 @@ char	*before_newline(char *str)
 		return (NULL);
 	p = malloc(sizeof(char) * get_index(str) + 1);
 	if (!p)
-		return (NULL);
+		return (free(str),NULL);
 	while (str[i] && str[i] != '\n')
 	{
 		p[i] = str[i];
@@ -58,8 +59,6 @@ char	*after_newline(char *str)
 	if (!str[i])
 		return (NULL);
 	j = get_index(str);
-	// if(str[j] == '\n')
-	// 	printf("ok");
 	if (j ==  ft_strlen(str))
 		return (free(str),NULL);
 	s = malloc(ft_strlen(str) - j + 1);
@@ -68,7 +67,22 @@ char	*after_newline(char *str)
 	while (str[j])
 		s[i++] = str[j++];
 	s[i] = '\0';
-	return (free(str),str=NULL,s);
+	return (free(str), str=NULL, s);
+}
+
+int	is_newline(char *str)
+{
+	int i; 
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if(str[i] == '\n')
+			return(1);
+		i++;
+	}
+	return (0);
 }
 
 char	*get_next_line(int fd)
@@ -76,28 +90,30 @@ char	*get_next_line(int fd)
 	static char	*backup;
 	char		*buffer;
 	char		*line;
-	size_t		i;
+	char 		*tmp;
+	ssize_t		i;
 
 	i = 1;
 	if(fd < 0 || BUFFER_SIZE <= 0)
-		return NULL;
-	if (!backup)
-        backup = ft_strdup("");
+		return (NULL);
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
-		if(!buffer)
-			return NULL;
-	while (i && !ft_strchr(backup, '\n'))
+	if(!buffer)
+		return (NULL);
+	while (i && is_newline(backup) == 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
-		if(i < 0)
-			return (free(backup),backup = NULL,free(buffer),NULL);
-		*(buffer + i) = '\0';
-		backup = ft_strjoin(backup, buffer);
+		if(i == -1 || (i ==0 && backup == NULL))
+			return (free(backup),free(buffer),NULL);
+		buffer[i] = '\0';
+		if (!backup)
+			backup = ft_strdup("");
+		tmp = backup;
+		backup = ft_strjoin(tmp, buffer);
+		free(tmp);
 	}
 	line = before_newline(backup);
-	free(buffer);
 	backup = after_newline(backup);
-	return (line);
+	return (free(buffer),line);
 }
 
 // int main()
@@ -105,17 +121,17 @@ char	*get_next_line(int fd)
 //     int fd;
 
 //     fd = open("txt.txt",O_RDONLY);
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
-// 	printf("line ==> %s", get_next_line(fd));
+// 	char *s =get_next_line(fd);
+// 	while (s)
+// 	{
+// 		printf("%s", s);
+// 		free(s);
+// 		s=get_next_line(fd);
+// 	}
+// 	printf("%s", s);
+// 		free(s);
+// 	// printf("line ==> %s", get_next_line(fd));
+// 	//system ("leaks a.out");
+	
 // 	close(fd);
-// char *str ;
-// printf("%d",get_index("hvdjhvsudsuh"));
-// 	str = ft_strdup("aaaaaaa\nbbbbbbbbb");
-// 	printf("%s",after_newline(str));
 // }
