@@ -6,12 +6,11 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:34:50 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/17 16:43:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:20:01 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include<fcntl.h>
 
 int	get_index(char	*str)
 {
