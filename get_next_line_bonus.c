@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:24:50 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/18 11:34:16 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:26:27 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	is_newline(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*backup;
+	static char	*backup[OPEN_MAX];
 	char		*buffer;
 	char		*line;
 	ssize_t		i;
@@ -93,20 +93,20 @@ char	*get_next_line(int fd)
 	i = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!backup)
-		backup = ft_strdup("");
+	if (!backup[fd])
+		backup[fd] = ft_strdup("");
 	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (i && is_newline(backup) == 0)
+	while (i && is_newline(backup[fd]) == 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
-			return (free(backup), free(buffer), backup = NULL, NULL);
+			return (free(backup[fd]), free(buffer), backup[fd] = NULL, NULL);
 		buffer[i] = '\0';
-		backup = ft_strjoin(backup, buffer);
+		backup[fd] = ft_strjoin(backup[fd], buffer);
 	}
-	line = before_newline(backup);
-	backup = after_newline(backup);
+	line = before_newline(backup[fd]);
+	backup[fd] = after_newline(backup[fd]);
 	return (free(buffer), line);
 }
