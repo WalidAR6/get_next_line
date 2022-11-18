@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:27:53 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/18 12:06:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/18 12:09:02 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char	*ft_strjoin(char *s1, char *s2);
 int		get_index(char	*str);
 char	*before_newline(char *str);
 char	*after_newline(char *str);
-char	*get_next_line_bonus(int fd);
+char	*get_next_line(int fd);
 
 #endif
