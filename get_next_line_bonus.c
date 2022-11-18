@@ -6,10 +6,11 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:24:50 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/18 11:25:08 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/18 11:29:09 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line_bonus.h"
 
 int	get_index(char	*str)
 {

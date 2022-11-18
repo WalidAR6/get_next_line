@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:27:53 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/18 11:28:04 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/18 11:30:16 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include<unistd.h>
 # include<stdlib.h>
-# include<stdio.h>
 
 size_t	ft_strlen(char *str);
 size_t	ft_strlcpy(char *dst, char *src, size_t n);

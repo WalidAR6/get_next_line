@@ -6,10 +6,11 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:26:01 by waraissi          #+#    #+#             */
-/*   Updated: 2022/11/18 11:26:26 by waraissi         ###   ########.fr       */
+/*   Updated: 2022/11/18 11:29:28 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *str)
 {
